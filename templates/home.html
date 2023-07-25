@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Bosh sahifa{% endblock title %}
+
+{% block content %}
+    <br/>
+    <div class="jumbotron">
+        {% if user.is_authenticated %}
+            {% if user.is_staff %}
+                <h1 class="display-4">Assalomu alaykum hurmatli {{ user.username }}!</h1>
+{#                <p><a href="{% url 'logout' %}">Chiqib ketish</a></p>#}
+            {% else %}
+                <h1 class="display-4">Assalomu alaykum hurmatli {{ user.last_name }}  {{ user.first_name }}!</h1>
+{#                <p><a href="{% url 'logout' %}">Chiqib ketish</a></p>#}
+            {% endif %}
+
+{#          <h1 class="display-4">Assalomu alaykum</h1>#}
+            <p class="lead">Ibrohiming shaxsiy PY_Blog saytiga xush kelibsiz! </p>
+            <hr class="my-4">
+            <p>Bu yerda siz Python va dasturlashga oid qiziqarli ma'lumotlarga ega bo'lishingiz mumkun</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">Postlarni ko'rish</a>
+            </p>
+            <p><a href="{% url 'logout' %}">Chiqib ketish</a></p>
+        {% else %}
+            <h1 class="display-4">Assalomu alaykum</h1>
+            <p>Siz saytga kirmagansiz</p>
+            <a href="{% url 'login' %}">Kirish</a>
+            <br>
+            <a href="{% url 'signup' %}">Ro'yxatdan o'tish</a>
+        {% endif %}
+    </div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{##}
+{#    {% if user.is_authenticated %}#}
+{#        {% if user.is_staff %}#}
+{#            Xush kelibsiz hurmatli {{ user.username }}!#}
+{#            <p><a href="{% url 'logout' %}">Chiqib ketish</a></p>#}
+{#        {% else %}#}
+{#            Xush kelibsiz hurmatli {{ user.last_name }}  {{ user.first_name }}!#}
+{#            <p><a href="{% url 'logout' %}">Chiqib ketish</a></p>#}
+{#        {% endif %}#}
+{#    {% else %}#}
+{#        <p>Siz saytga kirmagansiz</p>#}
+{#        <a href="{% url 'login' %}">Kirish</a>#}
+{#        <br>#}
+{#        <a href="{% url 'signup' %}">Ro'yxatdan o'tish</a>#}
+{#    {% endif %}#}
+{#{% endblock content %}#}
